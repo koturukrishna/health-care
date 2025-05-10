@@ -151,16 +151,32 @@ export const getUsers = asyncHandler(async (req, res) => {
 // @desc    Get user profile
 // @route   GET /api/users/profile
 // @access  Private
+// export const getUserProfile = asyncHandler(async (req, res) => {
+//   const user = await User.findById(req.userId);
+
+//   if (!user) throw new Error("User not found");
+
+//   const { password, ...rest } = user._doc;
+
+//   res.status(200).json({
+//     ...rest,
+//   });
+// });
+
 export const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.userId);
+  let user = await User.findById(req.userId).select("-password");
 
-  if (!user) throw new Error("User not found");
+  // If user not found in User collection, check Doctor collection
+  if (!user) {
+    user = await Doctor.findById(req.userId).select("-password");
+  }
 
-  const { password, ...rest } = user._doc;
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
 
-  res.status(200).json({
-    ...rest,
-  });
+  res.status(200).json(user);
 });
 
 export const getMyAppointments = asyncHandler(async (req, res) => {
