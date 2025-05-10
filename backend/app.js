@@ -22,10 +22,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://medicare-hospital-krishna.netlify.app",
+    origin: "*",
     credentials: true,
   })
 );
+
+// cors({
+//   origin: "https://medicare-hospital-krishna.netlify.app",
+//   credentials: true,
+// })
 
 app.use("/api/users", userRoutes);
 app.use("/api/doctors", doctorRoutes);
