@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { BASE_URL } from "../config";
+// import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
@@ -14,7 +14,7 @@ export function useReview(id) {
     mutationFn: async (data) => {
       try {
         const res = await axios.post(
-          `${BASE_URL}/api/doctors/${id}/reviews`,
+          `https://health-care-h0ih.onrender.com/api/doctors/${id}/reviews`,
           data,
           { withCredentials: true },
         );

@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { BASE_URL } from "../config";
+// import { BASE_URL } from "../config";
 
 export function useCreateBooking() {
   //   const navigate = useNavigate();
@@ -11,7 +11,7 @@ export function useCreateBooking() {
     mutationFn: async (doctorId) => {
       try {
         const { data } = await axios.post(
-          `${BASE_URL}/api/bookings/checkout-session/${doctorId}`,
+          `https://health-care-h0ih.onrender.com/api/bookings/checkout-session/${doctorId}`,
           {
             withCredentials: true,
           },

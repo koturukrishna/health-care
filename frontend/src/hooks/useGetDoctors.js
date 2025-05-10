@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import axios from "axios";
-import { BASE_URL } from "../config";
+// import { BASE_URL } from "../config";
 
 export function useGetDoctors(query) {
   const { isPending, data: doctors } = useQuery({
@@ -9,7 +9,7 @@ export function useGetDoctors(query) {
     queryFn: async () => {
       try {
         const response = await axios.get(
-          `${BASE_URL}/api/doctors?query=${query}`,
+          `https://health-care-h0ih.onrender.com/api/doctors?query=${query}`,
           {
             withCredentials: true,
           },

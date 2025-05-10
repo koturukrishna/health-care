@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import axios from "axios";
-import { BASE_URL } from "../config";
+// import { BASE_URL } from "../config";
 import { useUser } from "../context/UserContext";
 
 export function useUpdateDoctor() {
@@ -15,7 +15,7 @@ export function useUpdateDoctor() {
     mutationFn: async ({ doctorId, doctorData }) => {
       try {
         const { data: updatedDoctor } = await axios.put(
-          `${BASE_URL}/api/doctors/${doctorId}`,
+          `https://health-care-h0ih.onrender.com/api/doctors/${doctorId}`,
           doctorData,
           { withCredentials: true },
         );

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import axios from "axios";
-import { BASE_URL } from "../config";
+// import { BASE_URL } from "../config";
 import { useUser } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 // import { useState } from "react";
@@ -18,9 +18,12 @@ export function useGetProfile() {
     queryKey: ["user"],
     queryFn: async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/users/profile`, {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          `https://health-care-h0ih.onrender.com/api/users/profile`,
+          {
+            withCredentials: true,
+          },
+        );
         // setData(response.data);
         // refetch();
         return response.data;

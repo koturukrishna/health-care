@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import axios from "axios";
-import { BASE_URL } from "../config";
+// import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 
 export function useGetBookings() {
@@ -14,7 +14,7 @@ export function useGetBookings() {
     queryFn: async () => {
       try {
         const { data } = await axios.get(
-          `${BASE_URL}/api/users/appointments/my-appointments`,
+          `https://health-care-h0ih.onrender.com/api/users/appointments/my-appointments`,
           {
             withCredentials: true,
           },
